@@ -1,0 +1,26 @@
+<!-- 监管助手 -->
+<view class="container">
+  <view class="bigContent">
+    <!-- 头部搜索 -->
+    <view class="header">
+      <input class="searchInput" bindinput="adInputChange" placeholder="请输入工地名称" auto-focus/>
+      <view class="searchaContent" bindtap="searchClick">
+        <image src="/img/search.png" class="bgimg" />
+      </view>
+    </view>
+    <!-- 区县选择 -->
+    <view class="selector">
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" range="{{multiArray}}">
+        <view class="picker">
+          {{multiArray[0][multiIndex[0]]}}—{{multiArray[1][multiIndex[1]]}}—{{multiArray[2][multiIndex[2]]}}
+        </view>
+      </picker>
+    </view>
+    <!-- 头部tab -->
+    <view class="topTab">
+      <view class="tabItem {{isTabOne?'stateColor':''}}" bindtap="oneTableClick" >质量安全/月</view>
+      <view class="tabItem {{isTabTwo?'stateColor':''}}" bindtap='twoTableClick'>监理报告/季</view>
+      <view class="tabItem {{isTabThree?'stateColor':''}}" bindtap="threeTableClick">重大事故/季</view>
+    </view>
+  </view>
+</view>
