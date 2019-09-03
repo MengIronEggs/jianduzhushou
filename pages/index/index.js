@@ -1,6 +1,6 @@
 // 引入公共js
 import common from '../../utils/common.js';
-// pages/index/index.js
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -12,9 +12,15 @@ Page({
       ["省直管"],
     ],
     multiIndex: [0, 0, 0],
+    // 列表数据
+    pageData:{},
+    filterList:[],
+    // 三栏tab
     isTabOne:true,
-    isTabTwo:false,
+    isTabTwo:false, 
     isTabThree:false,
+    // 两栏tab
+    daiban:true,
   },
   /**
    * 下拉确定的点击事件
@@ -63,11 +69,27 @@ Page({
       isTabThree: true,
     });
   },
+  // 页面数据加载
+  pageLoadeFn(){
+    let url = `project/findAllProject`;
+    let post_data = {
+      'operationName': '张山'
+    }
+    getApp().globalData.$post(url,post_data).then(res=>{
+      console.log(res);
+      if(res.code == 0){
+        this.setData({
+          pageData: res.data,
+          filterList: res.data.fenpei.daiban,
+        });
+      };
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.pageLoadeFn();
   },
 
   /**

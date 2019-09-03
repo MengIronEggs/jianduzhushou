@@ -5,3 +5,25 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+.bottomContent{
+  width:100%;
+  height: 50px;
+  background: red;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  display: flex;
+  flex-direction: row;
+}
+.bottomContent > button:nth-child(1){
+  background: #4cafea;
+}
+.bottomContent > button:nth-child(2){
+  background: #0b0f34;
+}
+.btn{
+  flex: 1;
+  border-radius: 0;
+  color: #fff;
+}
+

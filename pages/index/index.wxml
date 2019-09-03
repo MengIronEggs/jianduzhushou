@@ -3,7 +3,7 @@
   <view class="bigContent">
     <!-- 头部搜索 -->
     <view class="header">
-      <input class="searchInput" bindinput="adInputChange" placeholder="请输入工地名称" auto-focus/>
+      <input class="searchInput" bindinput="adInputChange" placeholder="请输入工地名称" />
       <view class="searchaContent" bindtap="searchClick">
         <image src="/img/search.png" class="bgimg" />
       </view>
@@ -18,9 +18,39 @@
     </view>
     <!-- 头部tab -->
     <view class="topTab">
-      <view class="tabItem {{isTabOne?'stateColor':''}}" bindtap="oneTableClick" >质量安全/月</view>
+      <view class="tabItem {{isTabOne?'stateColor':''}}" bindtap="oneTableClick">质量安全/月</view>
       <view class="tabItem {{isTabTwo?'stateColor':''}}" bindtap='twoTableClick'>监理报告/季</view>
       <view class="tabItem {{isTabThree?'stateColor':''}}" bindtap="threeTableClick">重大事故/季</view>
+    </view>
+    <!-- 列表content -->
+    <view class="listContent">
+      <view class="listTab">
+        <view class="listTabText {{daiban?'stateColor':''}}" style="border-right:1px solid #ccc;">待办</view>
+        <view class="listTabText">已办</view>
+      </view>
+      <!-- 分配部分的待办title -->
+      <view class="listTitleContent">
+        <view class="gdName">项目名称</view>
+        <view class="caozuo">办理人</view>
+        <view class="caozuo">完成率</view>
+        <view class="caozuo">操作</view>
+        <view class="caozuo">时间</view>
+      </view>
+      <!-- 分配部分的已办titlt -->
+      <!-- 我的部分的已办titlt -->
+      <!-- 我的部分的已办titlt -->
+      <!-- 列表 -->
+      <view class="listTitleContent" wx:key="index" wx:for="{{filterList}}" wx:for-index="item.id" wx:for-item="item" data-bean="{{item}}" >
+        <view class="gdName">{{item.xmName}}</view>
+        <view class="caozuo">{{item.name}}</view>
+        <view class="caozuo">{{item.operation}}%</view>
+        <view class="caozuo">{{item.complationrate}}</view>
+        <view class="caozuo">{{item.time}}</view>
+      </view>
+    </view>
+    <view class="bottomContent">
+      <button class="btn" style="background:#cbae6e;">分配</button>
+      <button class="btn" style="background:#f2f2f2;color:#000;">我的</button>
     </view>
   </view>
 </view>
